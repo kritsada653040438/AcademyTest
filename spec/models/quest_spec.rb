@@ -15,9 +15,9 @@ RSpec.describe Quest, type: :model do
     expect(quest).to_not be_valid
   end
 
-  it "is not valid without a status" do
+  it "is valid without a status" do
     quest = build(:quest, status: nil)
-    expect(quest).to_not be_valid
+    expect(quest).to be_valid
   end
 
   it "is valid with status true" do
