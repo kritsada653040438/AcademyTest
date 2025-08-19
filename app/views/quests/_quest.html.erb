@@ -1,0 +1,15 @@
+<%= turbo_frame_tag quest do %>
+  <div class="flex items-center justify-between p-4 bg-white rounded-lg shadow-md mb-2">
+    <div class="flex items-center">
+      <%= button_to toggle_quest_path(quest), method: :patch, class: "mr-4" do %>
+        <div class="w-6 h-6 border-2 rounded-md flex items-center justify-center <%= quest.status? ? 'bg-green-500 border-green-500' : 'border-gray-300' %>">
+          <% if quest.status? %>
+            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+          <% end %>
+        </div>
+      <% end %>
+      <span class="<%= quest.status? ? 'line-through text-gray-500' : '' %>"><%= quest.name %></span>
+    </div>
+    <%= button_to "Delete", quest_path(quest), method: :delete, data: { confirm: "Are you sure?" }, class: "text-red-500 hover:text-red-700 font-semibold" %>
+  </div>
+<% end %>

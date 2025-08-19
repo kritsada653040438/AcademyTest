@@ -1,0 +1,20 @@
+<%= form_with(model: quest, class: "w-full") do |form| %>
+  <%= turbo_frame_tag quest do %>
+    <% if form.object.errors.any? %>
+      <div class="text-red-500 text-sm">
+        <% form.object.errors.full_messages.each do |message| %>
+          <p><%= message %></p>
+        <% end %>
+      </div>
+    <% end %>
+
+    <div class="flex items-center gap-4">
+      <div class="flex-1">
+        <%= form.text_field :name, class: "w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500", placeholder: "Add a new quest..." %>
+      </div>
+      <div>
+        <%= form.submit "Add Quest", class: "bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-md cursor-pointer" %>
+      </div>
+    </div>
+  <% end %>
+<% end %>
