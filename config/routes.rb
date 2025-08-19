@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root "quests#index"
+  get "/brag_document", to: "brag_documents#show"
 
   resources :quests do
     member do
