@@ -14,7 +14,7 @@ class QuestsController < ApplicationController
         format.turbo_stream
         format.html { redirect_to quests_url, notice: "Quest was successfully created." }
       else
-        format.turbo_stream { render turbo_stream: turbo_stream.replace(@quest, partial: "quests/form", locals: { quest: @quest }) }
+        format.turbo_stream { render turbo_stream: turbo_stream.replace(@quest, partial: "quests/form", locals: { quest: @quest }), status: :unprocessable_entity }
         format.html { render :index, status: :unprocessable_entity }
       end
     end
